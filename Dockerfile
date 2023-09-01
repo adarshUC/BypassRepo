@@ -6,5 +6,5 @@ RUN apt-get update -y && apt-get upgrade -y \
 COPY . /app/
 WORKDIR /app/
 RUN git clone https://github.com/adarshuc/hellmusic
-RUN cd Music && pip3 install -U -r requirements.txt
-CMD cd Music && bash StartMusic
+RUN cd hellmusic && pip3 install -U -r requirements.txt
+CMD cd hellmusic && bash StartMusic
