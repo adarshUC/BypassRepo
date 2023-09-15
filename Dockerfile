@@ -1,10 +1,10 @@
-FROM nikolaik/python-nodejs:python3.9-nodejs18
+FROM mysterysd/wzmlx:latest
+WORKDIR /usr/src/app
 RUN apt-get update -y && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends ffmpeg \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-COPY . /app/
-WORKDIR /app/
-RUN git clone https://github.com/adarshuc/hellmusic
-RUN cd hellmusic && pip3 install -U -r requirements.txt
-CMD cd hellmusic && bash StartMusic
+    && chmod 777 /usr/src/app
+COPY requirements.txt .
+
+RUN git clone https://github.com/adarshuc/leech
+RUN cd leech && pip3 install --no-cache-dir -r requirements.txt
+COPY . .
+CMD cd leech && bash start.sh
